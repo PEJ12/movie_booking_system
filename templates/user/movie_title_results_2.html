@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 결과</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            background: #fff;
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>검색 결과</h1>
+    <h2>'{{ search_title }}' 검색 결과:</h2>
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <img src="{{ movie[4] }}" alt="Poster for {{ movie[1] }}">
+                <p><strong>영화 ID:</strong> {{ movie[0] }}</p>
+                <p><strong>제목:</strong> {{ movie[1] }}</p>
+                <p><strong>극장 ID:</strong> {{ movie[2] }}</p>
+                <p><strong>상영 날짜:</strong> {{ movie[3] }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <div style="text-align: center;">
+        <a href="{{ url_for('print_movie_title') }}">다시 검색하기</a>
+    </div>
+</body>
+</html>

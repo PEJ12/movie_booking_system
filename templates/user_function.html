@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Function</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+        .link-list li {
+            margin: 10px 0;
+        }
+        .link-list a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+        .link-list a:hover {
+            color: #388E3C;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>환영합니다, {{ name }}님!</h2>
+        <p>고객님 원하시는 기능을 선택해주세요.</p>
+        <ul class="link-list">
+            <li><a href="/movies">1. 모든 상영 예정인 영화 조회</a></li>
+            <li><a href="/movies/search">2. 영화 이름으로 상영 예정인 영화 조회</a></li>
+            <li><a href="/movies/sort">3. 영화 상영 날짜 기준으로 상영 예정인 영화를 내림차순 정렬</a></li>
+            <li><a href="/movies/book/{{name}}/{{member_id}}">4. 영화 예매</a></li>
+            <li><a href="/movies/cancel/{{name}}/{{member_id}}">5. 영화 취소</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+
+
+
+
+

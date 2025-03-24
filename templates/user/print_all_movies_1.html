@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Movies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .movie-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .movie-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            margin: 15px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .movie-item img {
+            width: 100px;
+            height: 150px;
+            margin-right: 20px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .movie-details {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .movie-details li {
+            margin: 5px 0;
+            color: #666;
+        }
+        h2 {
+            margin: 0 0 10px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Movies</h1>
+    <div class="movie-list">
+        {% for movie in movies %}
+        <div class="movie-item">
+            <!-- Movie poster -->
+            <img src="{{ movie[4] }}" alt="Poster for {{ movie[1] }}">
+            <div>
+                <h2>{{ movie[1] }}</h2> <!-- Movie title -->
+                <ul class="movie-details">
+                    <li><strong>Movie ID:</strong> {{ movie[0] }}</li>
+                    <li><strong>Theater ID:</strong> {{ movie[2] }}</li>
+                    <li><strong>Screening Date:</strong> {{ movie[3] }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

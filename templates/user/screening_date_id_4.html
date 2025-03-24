@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie_title }} 상영일정</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .movie-info {
+            margin: 20px 0;
+        }
+
+        .screening-list {
+            margin-top: 30px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .screening-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 10px auto;
+            width: 50%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .screening-item strong {
+            color: #007BFF;
+        }
+
+        .screening-item a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+    </style> 
+</head>
+<body>
+    <!-- 영화 제목 표시 -->
+    <h1>{{ movie_title[0] }} 상영 일정</h1>
+
+    <!-- 상영 일정 정보 -->
+    <div class="movie-info">
+        <h2>상영 날짜 목록</h2>
+        <ul class="screening-list">
+            {% for screening in result %}
+                <li class="screening-item">
+                    <a href="/movies/book/valid_screening?name={{ movie_title[0] }}&member_id={{ member_id }}&movie_id={{ movie_id }}&screening_date_id={{ screening[0] }}">
+                        <strong>상영 ID:</strong> {{ screening[0] }} <br>
+                        <strong>상영 날짜:</strong> {{ screening[1] }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

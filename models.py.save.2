@@ -1,0 +1,44 @@
+import sqlite3
+
+def get_db_connection():
+    """SQLite 데이터베이스 연결 함수"""
+    conn = sqlite3.connect('movies.db') #movies.db는 프로젝트 디렉터리에 저장된 파일
+    conn.row_factory = sqlite3.Row #딕셔너리 형태로 결과를 반환하도록 설정
+    return conn
+
+def print_all_movie():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("""SELECT DISTINCT m.movie_id, m.movie_title, s.theater_id, s.screening_date
+            FROM movie m JOIN screeningschedule s ON m.movie_id = s.movie_id
+            WHERE s.screening_date >= CURRENT_DATE""")
+    result = cursor.fetchall()
+    if not result:
+        print("No data found!")
+    else:
+        print("Data retrieved successfully!")
+    print("hi")
+    for r in result:
+        print(r)
+    conn.close()
+    return result
+
+
+def fetch_members_data():
+    """회원 데이터 가져오기"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, password, name FROM Member")
+    members_data_from_db = cursor.fetchall()
+    return members_data_from_db
+
+def distinguish_user(input_id):
+    """사용자 유형 구분하기"""
+    if "user" in input_id:
+        return "user"
+    elif "staff" in input_id:
+        return "staff"
+    elif "analyst" in input_id:
+        return "analyst"
+
+

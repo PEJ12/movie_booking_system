@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상영관 정보</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            margin: 40px;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        .info-box {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #e3f2fd;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        ul li:hover {
+            background: #90caf9;
+        }
+        .seat-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background: #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>상영관 정보</h1>
+
+    <div class="info-box">
+        <p><strong>상영관 ID:</strong> {{ theater_id }}</p>
+        <p><strong>총 좌석 수:</strong> {{ total_seat }}</p>
+    </div>
+
+    <h2>예약 가능한 좌석</h2>
+    <form action="/purchase" method="POST">
+        <input type="hidden" name="theater_id" value="{{ theater_id }}">
+        <input type="hidden" name="screening_date_id" value="{{ screening_date_id }}">
+        <ul class="seat-list">
+            {% if seat_id %}
+                {% for seat in seat_id %}
+                    <li onclick="selectSeat({{ seat }})">{{ seat }}</li>
+                {% endfor %}
+            {% else %}
+                <li>예약 가능한 좌석이 없습니다.</li>
+            {% endif %}
+        </ul>
+        <input type="hidden" name="selected_seat_id" id="selected_seat_id" required>
+        <button type="submit" style="margin-top: 20px; padding: 10px 20px; border: none; border-radius: 5px; background: #28a745; color: white;">좌석 선택 완료</button>
+    </form>
+
+    <a href="/">메인 페이지로 돌아가기</a>
+
+    <script>
+        function selectSeat(seatId) {
+            document.getElementById('selected_seat_id').value = seatId;
+            alert(seatId + "번 좌석을 선택하셨습니다.");
+        }
+    </script>
+</body>
+</html>
