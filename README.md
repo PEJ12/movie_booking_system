@@ -15,11 +15,14 @@
    - 일반 사용자(User): 영화 예매 및 취소 가능
    - 직원(Staff): 멤버 정보 조회, 영화 정보 갱신, 평점 조회 및 추가
    - 분석가(Analyst): 영화 관람 정보 분
+4. **데이터베이스 연동**
+   - SQLite/MySQL을 사용하여 영화 및 예매 데이터를 관리합니다.
 
 ## 🛠 기술 스택
 - **Backend**: Python (Flask), SQLite3
 - **Frontend**: HTML, CSS
 - **Server**: AWS EC2 (Ubuntu)
+-  **Database**: SQLite / MySQL
 
 ## 📂 프로젝트 구조
 ```
