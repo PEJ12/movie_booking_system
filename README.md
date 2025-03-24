@@ -19,10 +19,10 @@
    - SQLite/MySQL을 사용하여 영화 및 예매 데이터를 관리
 
 ## 🛠 기술 스택
-- **Backend**: Python (Flask), SQLite3
+- **Backend**: Python (Flask)
 - **Frontend**: HTML, CSS
 - **Server**: AWS EC2 (Ubuntu)
--  **Database**: SQLite / MySQL
+-  **Database**: SQLite3 / MySQL
 
 ## 📂 프로젝트 구조
 ```
